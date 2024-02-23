@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    public PlayerMovement movement;
+    [SerializeField] private Rigidbody2D rb;
 
-    public PlayerFollow follow;
+    public PlayerMovement movement;
 
     private SpriteRenderer sprite;
 
@@ -17,7 +17,9 @@ public class PlayerLife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        movement = GetComponent<PlayerMovement>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,11 +30,11 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
+        rb.bodyType = RigidbodyType2D.Static;
         sprite.enabled = false;
         movement.enabled = false;
-        follow.enabled = false;
         Invoke(nameof(Restart), restartDelay);
     }
 

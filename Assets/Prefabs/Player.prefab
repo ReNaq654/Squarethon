@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a707cf16af2498187872de17a505ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 124067609264375688}
   movement: {fileID: 7579487275377222867}
   follow: {fileID: 0}
   restartDelay: 1
