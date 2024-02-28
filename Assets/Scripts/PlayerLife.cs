@@ -13,6 +13,9 @@ public class PlayerLife : MonoBehaviour
 
     public float restartDelay = 1f;
 
+    public AudioSource dieSound;
+
+    private BoxCollider2D coll;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,8 @@ public class PlayerLife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         movement = GetComponent<PlayerMovement>();
+        dieSound = GetComponent<AudioSource>();
+        coll = GetComponent<BoxCollider2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,6 +40,8 @@ public class PlayerLife : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         sprite.enabled = false;
         movement.enabled = false;
+        coll.enabled = false;
+        dieSound.Play();
         Invoke(nameof(Restart), restartDelay);
     }
 

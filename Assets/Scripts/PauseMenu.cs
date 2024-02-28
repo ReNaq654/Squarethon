@@ -9,14 +9,12 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject player;
-    public GameObject wall;
-    public GameObject DeathBlock;
+    public GameObject Barrier;
 
     // Start is called before the first frame update
     void Start()
     {
-        DeathBlock = GameObject.FindWithTag("DeathBlock");
-        wall = GameObject.FindWithTag("Terrain");
+        Barrier = GameObject.FindWithTag("Barrier");
         player = GameObject.FindWithTag("Player");
     }
 
@@ -38,8 +36,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         player.SetActive(true);
-        wall.SetActive(true);
-        DeathBlock.SetActive(true);
+        Barrier.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GamePaused = false;
@@ -48,8 +45,7 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         player.SetActive(false);
-        wall.SetActive(false);
-        DeathBlock.SetActive(false);
+        Barrier.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GamePaused = true;
